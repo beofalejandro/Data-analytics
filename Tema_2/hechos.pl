@@ -1,11 +1,20 @@
-le_gusta(juan,maria).
-le_gusta(juan,leer).
-le_gusta(maria,facebook).
-le_gusta(maria,cocinar).
-le_gusta(maria,musica).
-le_gusta(ines,musica).
-le_gusta(maria,juan).
-le_gusta(maria,nadar).
+le_gusta(juan,"El Señor de los Anillos").
+le_gusta(juan,"Interestelar").
+le_gusta(juan,"La La Land").
 
-juegan(juan,maria,ajedrez).
-juegan(teresa,mario,futbol).
+le_gusta(maria,"Orgullo y Prejuicio").
+le_gusta(maria,"La La Land").
+le_gusta(maria,"Mujercitas").
+le_gusta(maria,"Titanic").
+
+le_gusta(ines,"Titanic").
+le_gusta(ines,"La La Land").
+
+le_gusta(teresa,"Rapidos y Furiosos").
+le_gusta(teresa,"Mision Imposible").
+
+le_gusta(mario,"Rapidos y Furiosos").
+le_gusta(mario,"Depredador").
+
+juegan(juan, maria,"Ajedrez").
+juegan(teresa, mario,"Futbol").
