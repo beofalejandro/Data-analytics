@@ -1,6 +1,6 @@
-from pyswip import Prolog as Plg
+from pyswip import Prolog as plg
 
-prolog = Plg()
+prolog = plg()
 prolog.consult("hechos.pl")
 
 pregunta = input('¿Que le gusta a...? ')
