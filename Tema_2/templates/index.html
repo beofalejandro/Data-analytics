@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {{url_for('static', filename='index.css')}} " />
+    <link rel="stylesheet" href=" {{url_for('static', filename='template.css')}} " />
+    <title>Inicio | System Movies Recomender</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Sistema de recomendacion de peliculas</h1>
+    </header>
+
+
+    <div class="content">
+        <div>
+            <form action="/recomendar_pelicula" method="POST">
+                ¿Qué película viste?
+                <input type="text" name="pelicula" placeholder="Escribe el nombre de la película" required>
+                <button type="submit" class="button">Recomendar</button>
+            </form>
+            <div class="output">
+                <h3>Quizás podría gustarte</h3>
+                <br><br>
+
+                <div class="cassete">
+                    {% if movie_recomended %}
+                    {% for recomendacion in movie_recomended %}
+                    <div class="recommendation">
+                        <p class="text-output">{{ recomendacion }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div>Soon</div>
+    </div>
+
+</body>

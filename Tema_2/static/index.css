@@ -1,0 +1,57 @@
+body {
+  background: linear-gradient( 195deg, #266bff18, #ff45b82a);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.content {
+    padding-top: 90px;
+    width: 100%;
+    display: flex;
+}
+
+.content > div {
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.output {
+    display: block;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.cassete {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.recommendation {
+    height: 300px;
+    margin: 10px 5px;
+    padding: 15px;
+    background: linear-gradient( 195deg, #266bff3b, #ff45b84b);
+    width: calc(33.33% - 10px);
+    border-radius: var(--global-container-border);
+    text-align: center;
+    cursor: default;
+    border: var(--dark-container-border);
+    box-sizing: border-box;
+    align-content: center;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .content {
+        flex-direction: column;
+        display: block;
+    }
+}

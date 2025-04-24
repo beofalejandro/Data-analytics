@@ -21,7 +21,6 @@ else:
     df = pd.DataFrame(data, columns=['pelicula', 'generos'])
     def create_transaction_list(df):
         return df['generos'].tolist()
-
     transaction_list = create_transaction_list(df)
 
     # Create a DataFrame for Apriori
@@ -30,31 +29,23 @@ else:
     encoded_array = encoder.fit(transaction_list).transform(transaction_list)
     onehot_df = pd.DataFrame(encoded_array, columns=encoder.columns_)
 
-    # Apply Apriori algorithm to find frequent itemsets and association rules
+    # Apply the Apriori algorithm to find frequent itemsets and association rules
     frequent_itemsets = apriori(onehot_df, min_support=0.05, use_colnames=True)
     rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.05) 
 
     # Function to recommend movies based on the viewed movie
     def recomendar(pelicula_vista):
         if pelicula_vista not in df['pelicula'].values:
-            print(f'The movie "{pelicula_vista}" was not found in the database.')
-            return
+            return [] 
         
         generos = df.loc[df['pelicula'] == pelicula_vista, 'generos'].values[0]
-        recomendaciones = rules[rules['antecedents'].apply(lambda x: any(item in generos for item in x))]
+        similar_movies = df[df['generos'].apply(lambda x: any(genre in x for genre in generos))]
+        similar_movies = similar_movies[similar_movies['pelicula'] != pelicula_vista]
+        similar_movies['shared_count'] = similar_movies['generos'].apply(lambda x: len(set(generos) & set(x)))
+        top_recommendations = similar_movies.sort_values(by='shared_count', ascending=False).head(5)
 
-        print(f'Recommendations based on "{pelicula_vista}":')
-        if recomendaciones.empty:
-            print("No recommendations found.")
-        else:
-            for index, row in recomendaciones.iterrows():
-                for genre in row['consequents']:
-                    print(f'- {genre}')
+        if top_recommendations.empty:
+            return [] 
 
-    # TODO: Replace with the movie you have seen
-    # Improve to genre recomendation
-    # or movie recommendation based on the genre of the movie you have seen
-    # Get asociated movies
-    # Improve frontend to proyect
-    pelicula_vista = 'Modern Times'
-    recomendar(pelicula_vista)
+        # Return a list of recommended movies with their genres for flask
+        return [f'{row["pelicula"]} (Genres: {row["generos"]})' for index, row in top_recommendations.iterrows()]
