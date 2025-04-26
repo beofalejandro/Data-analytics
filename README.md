@@ -1,6 +1,6 @@
 # README - Knowledge Engineering Projects
 
-0.9 Stable
+1.2 Stable
 
 This repository contains projects related to Knowledge Engineering, developed as part of different topics. Below is a description of the projects included in each thematic folder:
 
