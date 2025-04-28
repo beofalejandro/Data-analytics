@@ -22,16 +22,15 @@ while True:
             print("\n")
 
     if decision == '2':
-            estado_animo = input("Introduce tu estado de ánimo (feliz, triste, emocionado, pensativo): ").strip().lower()
+            estado_animo = input("Introduce tu estado de ánimo (feliz, triste, temeroso, emocionado, pensativo): ").strip().lower()
             recomendaciones = rch.recomendar_peliculas_por_animo(estado_animo)
-
             if isinstance(recomendaciones, list) and recomendaciones:
                 print(f'Recomendaciones para el estado de ánimo "{estado_animo}":')
                 for pelicula in recomendaciones:
                     print(f'- {pelicula}')
                 print("\n")
             else:
-                print("No hay recomendaciones disponibles.")
+                print(recomendaciones)
                 print("\n")
 
     elif decision == '3':

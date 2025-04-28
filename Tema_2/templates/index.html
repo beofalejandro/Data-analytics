@@ -39,7 +39,31 @@
                 </div>
             </div>
         </div>
-        <div>Soon</div>
+        <div>
+            <form action="/recomendar_animo" method="POST">
+                ¿Qué película viste?
+                <select name="estado_animo" required>
+                    <option value="" disabled selected>Selecciona tu estado de ánimo</option>
+                    <option value="feliz">Feliz</option>
+                    <option value="triste">Triste</option>
+                    <option value="emocionado">Emocionado</option>
+                </select>
+                <button type="submit" class="button">Recomendar</button>
+            </form>
+            <div class="output">
+                <h3>Quizás podría gustarte</h3>
+                <br><br>
+
+                <div class="cassete">
+                    {% if mood_recomended %}
+                    {% for recomendacion in mood_recomended %}
+                    <div class="recommendation">
+                        <p class="text-output">{{ recomendacion }}</p>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+            </div>
+        </div>
     </div>
 
 </body>
